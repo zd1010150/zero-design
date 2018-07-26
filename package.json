@@ -1,0 +1,29 @@
+{
+  "name": "my-first-react-component-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/lib/index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/parcel src/docs/index.html",
+    "build": "./node_modules/.bin/webpack --mode=production",
+    "build:docs": "./node_modules/.bin/parcel build src/docs/index.js -d dist/docs/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kiwi zhang",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/preset-react": "^7.0.0-beta.54",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.0-beta",
+    "parcel-bundler": "^1.9.7",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
