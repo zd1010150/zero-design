@@ -52,5 +52,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "antd": "^3.7.2"
+  }
 }
