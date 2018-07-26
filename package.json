@@ -1,8 +1,9 @@
 {
-  "name": "my-first-react-component-library",
-  "version": "1.0.0",
+  "name": "zero-design",
+  "version": "0.0.1",
   "description": "",
-  "main": "./dist/lib/index.js",
+  "main": "./build/lib/index.js",
+  "repository": "git@github.com:zd1010150/zero-design.git",
   "scripts": {
     "start": "./node_modules/.bin/parcel src/docs/index.html",
     "build": "./node_modules/.bin/webpack --mode=production",
