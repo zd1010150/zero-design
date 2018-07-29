@@ -20,9 +20,9 @@ class CategoryFilter extends Component{
         const {label, data, selectCategory} = this.props;
         return <div>
             <MySpan>{label}</MySpan>
-            {/* <CategoryList data={data}
+            <CategoryList data={data}
                           selectCategory={selectCategory}
-                          collapse={this.state.collapse}/> */}
+                          collapse={this.state.collapse}/>
             <MySpan><ShowMore onClick={this.showMore}/></MySpan>
         </div>
     }
