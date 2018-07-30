@@ -1,3 +1,8 @@
 import CategoryFilter from './categoryFilter';
-
-export default CategoryFilter;
+import BrandFilter from './brandFilter';
+import RefineResult from './refineResult';
+export {
+    CategoryFilter,
+    BrandFilter,
+    RefineResult
+};
