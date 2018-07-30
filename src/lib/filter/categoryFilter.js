@@ -13,7 +13,7 @@ class CategoryFilter extends Component{
             collapse: true
         }
     }
-    showMore(){
+    showMore = () => {
         this.setState(prevState => ({collapse:!prevState.collapse}))
     }
     render() {

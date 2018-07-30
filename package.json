@@ -20,9 +20,9 @@
   "homepage": "https://github.com/DimitriMikadze/create-react-library#readme",
   "license": "MIT",
   "dependencies": {
-    "styled-components": "^3.3.3"
+    "styled-components": "^3.3.3",
+    "antd": "^3.7.3"
   },
-  
   "devDependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -66,8 +66,7 @@
   },
   "peerDependencies": {
     "react": ">=0.14",
-    "react-dom": ">=0.14",
-    "antd": "^3.7.3"
+    "react-dom": ">=0.14"
   },
   "jest": {
     "collectCoverageFrom": [
