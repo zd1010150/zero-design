@@ -1,10 +1,22 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Row, Col } from "antd";
 import ShowMore from './component/showMore';
 import BrandList from './component/brandList';
 import AlphabetList from './component/alphabet';
-import ActionRow from './component/actionRow';
+
+const propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectBrand: PropTypes.func.isRequired,
+    saveBrand: PropTypes.func.isRequired,
+    selectAlphabet: PropTypes.func.isRequired,
+    pickedBrands: PropTypes.array.isRequired,
+    saveBackground: PropTypes.string,
+    cancelBackground: PropTypes.string,
+    label: PropTypes.string,
+}
+
 class BrandFilter extends Component{
     constructor(props){
         super(props);
@@ -45,5 +57,7 @@ class BrandFilter extends Component{
         </div>
     }
 }
+
+BrandFilter.propTypes = propTypes;
 
 export default BrandFilter;

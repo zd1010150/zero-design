@@ -17,7 +17,11 @@ for (let i = 2; i < 20; i++) {
   mockData.push(obj);
 }
 
-const mockBrand = [{ id: 1, name: "swiss" }, { id: 2, name: "blackmores" }];
+const mockBrand = [{ id: 0, name: "swiss" }, { id: 1, name: "blackmores" }];
+for (let i = 2; i < 20; i++) {
+    const obj = { id: i, name: "test " + i };
+    mockBrand.push(obj);
+}
 
 class App extends Component {
   constructor(props) {

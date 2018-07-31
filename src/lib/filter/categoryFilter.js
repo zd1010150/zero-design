@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from "antd";
 import styled from 'styled-components';
 import ShowMore from './component/showMore';
@@ -8,6 +9,15 @@ const StyledRow = styled(Row)`
     padding-bottom: 10px;
     margin-bottom: 10px;
 `;
+
+const propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectCategory: PropTypes.func.isRequired,
+    saveCategory: PropTypes.func.isRequired,
+    label: PropTypes.string,
+    saveBackground: PropTypes.string,
+    cancelBackground:  PropTypes.string,
+}
 
 class CategoryFilter extends Component{
     constructor(props){
@@ -23,15 +33,13 @@ class CategoryFilter extends Component{
         this.setState(prevState => ({collapse: true}))
     }
     render() {
-        const {label, data, selectCategory, saveCategory} = this.props;
+        const {label, saveCategory} = this.props;
         return <StyledRow>
                 <Col xl={3} lg={5}>
                     {label}
                 </Col>
                 <Col xl={18} lg={14}>
-                    <CategoryList data={data}
-                                  selectCategory={selectCategory}
-                                  collapse={this.state.collapse}
+                    <CategoryList collapse={this.state.collapse}
                                   onSave={saveCategory}
                                   onCancel={this.cancel}
                                   {...this.props}/>
@@ -43,6 +51,6 @@ class CategoryFilter extends Component{
     }
 }
 
-
+CategoryFilter.propTypes = propTypes;
 
 export default CategoryFilter;

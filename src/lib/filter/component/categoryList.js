@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Row, Col, Checkbox } from "antd";
 import styled from "styled-components";
 import ActionRow from './actionRow';
@@ -7,13 +8,19 @@ const CategoryRow = styled.div.attrs({
   width: props => props.width || "500px"
 })`
   transition: max-height 300ms ease-in-out;
-  // display: inline-block;
   // width: ${props => props.width};
   overflow: hidden;
-  // white-space: ${props => (props.collapse ? "nowrap" : "normal")};
-  // overflow: ${props => (props.collapse ? "hidden" : "visible")};
   max-height: ${props => (props.collapse ? "20px" : "1500px")};
 `;
+const propTypes = {
+    data: PropTypes.array.isRequired,
+    selectCategory: PropTypes.func.isRequired,
+    onSave: PropTypes.func.isRequired,
+    onCancel: PropTypes.func.isRequired,
+    collapse: PropTypes.bool.isRequired,
+    saveBackground: PropTypes.string,
+    cancelBackground:  PropTypes.string,
+}
 
 const CategoryList = ({ data, selectCategory, collapse, ...props }) =>
   <CategoryRow collapse={collapse}>
@@ -33,5 +40,7 @@ const CategoryList = ({ data, selectCategory, collapse, ...props }) =>
       </CheckboxGroup>
       <ActionRow {...props}/>
   </CategoryRow>;
+
+CategoryList.propType = propTypes;
 
 export default CategoryList;

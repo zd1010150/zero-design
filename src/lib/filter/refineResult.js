@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Row, Col} from "antd";
 import styled from 'styled-components';
 const StyledRow = styled(Row)`
@@ -25,6 +26,12 @@ const RemoveSpan = styled.span`
     cursor: pointer;
     padding: 0 5px;
 `;
+
+const propTypes = {
+    data: PropTypes.arrayOf(PropTypes.string).isRequired,
+    removeFilter: PropTypes.func.isRequired,
+    label: PropTypes.string,
+}
 
 class RefineResult extends Component {
     constructor(props) {
@@ -60,5 +67,5 @@ class RefineResult extends Component {
     }
 }
 
-
+RefineResult.propTypes = propTypes;
 export default RefineResult;
