@@ -13,7 +13,7 @@ const BrandRow = styled.div.attrs({
 `;
 
 const StyledCheckBox = styled.span`
-
+    cursor: pointer;
     font-size: 10px;
 `;
 
@@ -31,38 +31,39 @@ const StyledIcon = styled(Icon)`
     font-size: 13px;
 `;
 
-const BrandList = ({data, selectBrand, pickedBrandsId, collapse, ...props}) =>
+const BrandList = ({data, selectBrand, collapse, ...props}) =>
     <BrandRow collapse={collapse}>
         <CheckboxSet
             setOptions={data}
             handleChecked={selectBrand}
-            pickedBrandsId={pickedBrandsId}/>
+            {...props}/>
         <ActionRow {...props}/>
     </BrandRow>;
 
 
-const filter = (pickedBrandsId, brand) => {
-    return pickedBrandsId && pickedBrandsId.filter(id=> id === brand.id).length > 0
+const filter = (pickedBrands, brand) => {
+    // console.log('pickedBrands', pickedBrands)
+    return pickedBrands && pickedBrands.filter(data=> data.id === brand.id).length > 0
 }
 const CheckboxSet = (props) => {
     return (
         <Row>
             {props.setOptions.map((option, index) => {
                 return (
-                    <StyledCol key={option.id} xl={3} sm={5} xs={12} picked={filter(props.pickedBrandsId, option)}>
+                    <StyledCol key={option.id} xl={3} sm={5} xs={12} picked={filter(props.pickedBrands, option)}>
                         <div className="brand-name">
                             <input
                                 id={option.id}
                                 onChange={props.handleChecked}
                                 type="checkbox"
-                                value={option.id}/>
+                                value={JSON.stringify(option)}/>
                             <label
                                 htmlFor={option.id}
                                 key={option}>
                                 <StyledCheckBox>
                                     <img src="http://via.placeholder.com/100x30" width='100%'/>
                                     <div>{option.name}</div>
-                                    {filter(props.pickedBrandsId, option) && <StyledIcon type="check-square" />}
+                                    {filter(props.pickedBrands, option) && <StyledIcon type="check-square" />}
                                 </StyledCheckBox>
                             </label>
                         </div>

@@ -1,47 +1,64 @@
 import React, {Component} from 'react';
-import { Row, Col } from "antd";
+import {Row, Col} from "antd";
 import styled from 'styled-components';
 const StyledRow = styled(Row)`
-    border-bottom: 1px dashed #f5f5f5;
     padding-bottom: 10px;
     margin-bottom: 10px;
 `;
 
 const FilterDetails = styled.div`
-    border-bottom: 1px dashed grey;
+    border: 1px dashed grey;
     padding: 5px;
 `;
-const floatContent = styled.div`
+const FloatContent = styled.div`
     position: absolute;
+    background-color: white;
+    border: 1px solid #f5f5f5;
+    z-index: 2;
+`;
+const ResultsSpan = styled.span`
+    padding: 5px;
+`;
+const RemoveSpan = styled.span`
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 0 5px;
 `;
 
-class RefineResult extends Component{
-    constructor(props){
+class RefineResult extends Component {
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             showMore: false
         }
     }
+
     render() {
         const {label, data, removeFilter, children} = this.props;
         return <StyledRow>
-            <Col xl={3} lg={5}>
+            <Col xl={2} lg={3}>
                 {label}
             </Col>
-            <Col xl={5} lg={8}>
-                <FilterDetails onHover={this.setState({showMore: true})}>
+            <Col xl={3} lg={4}>
+                {data[0] &&
+                <FilterDetails onMouseOver={() => this.setState({showMore: true})}
+                               onMouseLeave={() => this.setState({showMore: false})}>
                     {data[0]}...
-                    <span onClick={removeFilter}>X</span>
+                    <RemoveSpan onClick={removeFilter}>X</RemoveSpan>
                 </FilterDetails>
-                <floatContent>
-                    {data.map(d=>d)}
-                </floatContent>
+                }
+                {
+                    this.state.showMore &&
+                    <FloatContent>
+                        {data.map((d, index) => <ResultsSpan key={index}>{d},</ResultsSpan>)}
+                    </FloatContent>
+                }
             </Col>
             {children}
         </StyledRow>
     }
 }
-
 
 
 export default RefineResult;

@@ -22,9 +22,9 @@ const CategoryList = ({ data, selectCategory, collapse, ...props }) =>
           <Row>
               {data.map((d, index) => {
                   return (
-                      <Col xl={3} sm={5} key={index}>
+                      <Col xl={3} sm={5} key={d.id}>
                           <Checkbox value={d} >
-                              {d}
+                              {d.name}
                           </Checkbox>
                       </Col>
                   );
