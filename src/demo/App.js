@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Example from "../lib";
 import {
-  SecondExample,
   CategoryFilter,
   BrandFilter,
   RefineResult
@@ -83,8 +81,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Example />
-        <SecondExample />
         <RefineResult
           label="Refine By"
           data={[

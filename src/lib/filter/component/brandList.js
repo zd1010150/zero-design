@@ -16,7 +16,6 @@ const StyledCheckBox = styled.span`
 
 const StyledCol = styled(Col)`
     border: ${props => props.picked ? '1px solid grey' : '1px solid #f5f5f5'};
-    padding: 0 20px;
     margin: 15px 20px 0 0;
     text-align: center;
 `;
