@@ -11,9 +11,9 @@ for (let i = 2; i < 20; i++) {
   mockData.push(obj);
 }
 
-const mockBrand = [{ id: 0, name: "swiss" }, { id: 1, name: "blackmores" }];
+const mockBrand = [{ id: 0, name: "swiss", url: 'http://via.placeholder.com/100x30' }, { id: 1, name: "blackmores", url: 'http://via.placeholder.com/100x30' }];
 for (let i = 2; i < 20; i++) {
-  const obj = { id: i, name: "test " + i };
+  const obj = { id: i, name: "test " + i, url: 'http://via.placeholder.com/100x30' };
   mockBrand.push(obj);
 }
 

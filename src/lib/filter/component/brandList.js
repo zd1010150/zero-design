@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {Row, Col, Icon, Checkbox} from "antd";
+import {Row, Col, Icon} from "antd";
 import styled from "styled-components";
 import ActionRow from './actionRow';
 const BrandRow = styled.div`
@@ -68,7 +68,7 @@ const CheckboxSet = (props) => {
                                 htmlFor={option.id}
                                 key={option}>
                                 <StyledCheckBox>
-                                    <img src="http://via.placeholder.com/100x30" width='100%'/>
+                                    <img src={option.url ? option.url : 'http://via.placeholder.com/100x30'} alt="brand" width='100%'/>
                                     <div>{option.name}</div>
                                     {filter(props.pickedBrands, option) && <StyledIcon type="check-square" />}
                                 </StyledCheckBox>
