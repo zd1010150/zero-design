@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-  CategoryFilter,
-  BrandFilter,
-  RefineResult
-} from "../lib";
+import { CategoryFilter, BrandFilter, DateFilter, RefineResult } from "../lib";
 import "antd/dist/antd.css";
 import "./app.css";
 const mockData = [
@@ -17,8 +13,8 @@ for (let i = 2; i < 20; i++) {
 
 const mockBrand = [{ id: 0, name: "swiss" }, { id: 1, name: "blackmores" }];
 for (let i = 2; i < 20; i++) {
-    const obj = { id: i, name: "test " + i };
-    mockBrand.push(obj);
+  const obj = { id: i, name: "test " + i };
+  mockBrand.push(obj);
 }
 
 class App extends Component {
@@ -30,7 +26,9 @@ class App extends Component {
       pickedCategories: [],
       pickedBrands: [],
       savedCategories: [],
-      savedBrands: []
+      savedBrands: [],
+      startDate: undefined,
+      endDate: undefined
     };
   }
   selectCategory = checkedValues => {
@@ -38,15 +36,17 @@ class App extends Component {
     this.setState({ pickedCategories: checkedValues });
   };
   selectBrand = e => {
-    console.log('brand:', JSON.parse(e.target.value));
+    console.log("brand:", JSON.parse(e.target.value));
     const brandObj = JSON.parse(e.target.value);
     let newPickedBrands = [];
-    if (e.target.checked) {
-      newPickedBrands = [...this.state.pickedBrands, brandObj];
-    } else {
+    if (
+      this.state.pickedBrands.find(brand => brand.id === parseInt(brandObj.id))
+    ) {
       newPickedBrands = this.state.pickedBrands.filter(
         brand => brand.id !== parseInt(brandObj.id)
       );
+    } else {
+      newPickedBrands = [...this.state.pickedBrands, brandObj];
     }
     this.setState({
       pickedBrands: newPickedBrands
@@ -72,10 +72,28 @@ class App extends Component {
       savedBrands
     });
   };
-  removeFilter = () => {
+  removeFilter = type => {
+    if (type === "CATEGORY") {
+      this.setState({
+        savedCategories: [],
+        pickedCategories: []
+      });
+    } else if (type === "BRAND") {
+      this.setState({
+        savedBrands: [],
+        pickedBrands: []
+      });
+    } else {
+      this.setState({
+        startDate: undefined,
+        endDate: undefined
+      });
+    }
+  };
+  selectDateRange = (date, dateString) => {
     this.setState({
-      savedCategories: [],
-      savedBrands: []
+      startDate: dateString[0],
+      endDate: dateString[1]
     });
   };
   render() {
@@ -83,15 +101,20 @@ class App extends Component {
       <div>
         <RefineResult
           label="Refine By"
-          data={[
-            ...this.state.savedCategories.map(d => d.name),
-            ...this.state.savedBrands.map(d => d.name)
-          ]}
+          categoryLabel="Category"
+          brandLabel="Brands"
+          dateLabel="Online Date"
+          categories={[...this.state.savedCategories.map(d => d.name)]}
+          brands={[...this.state.savedBrands.map(d => d.name)]}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          date={this.state.startDate && this.state.endDate ? this.state.startDate + ' - ' + this.state.endDate : undefined}
           removeFilter={this.removeFilter}
         />
         <CategoryFilter
           selectCategory={this.selectCategory}
           saveCategory={this.saveCategory}
+          pickedCategories={this.state.pickedCategories}
           label="Category"
           data={this.state.categories}
           saveBackground="green"
@@ -106,6 +129,12 @@ class App extends Component {
           data={this.state.brands}
           saveBackground="green"
           cancelBackground="red"
+        />
+        <DateFilter
+          onChange={this.selectDateRange}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          label="Online Date"
         />
       </div>
     );
