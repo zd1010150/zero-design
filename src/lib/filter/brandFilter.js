@@ -27,6 +27,13 @@ class BrandFilter extends Component{
             collapse: true
         }
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.pickedBrands.length > 0){
+            this.setState({collapse: false})
+        }else{
+            this.setState({collapse: true})
+        }
+    }
     showMore = () => {
         this.setState(prevState => ({collapse:!prevState.collapse}))
     }
@@ -41,7 +48,9 @@ class BrandFilter extends Component{
                     {label}
                 </Col>
                 <Col xl={18} lg={14}>
-                    <AlphabetList selectAlphabet={selectAlphabet}/>
+                    {
+                        !this.state.collapse &&  <AlphabetList selectAlphabet={selectAlphabet}/>
+                    }
                 </Col>
                 <Col xl={3} lg={5}>
                     <ShowMore onClick={this.showMore}/>

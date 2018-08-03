@@ -26,6 +26,13 @@ class CategoryFilter extends Component{
             collapse: true
         }
     }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.pickedCategories.length > 0){
+            this.setState({collapse: false})
+        }else{
+            this.setState({collapse: true})
+        }
+    }
     showMore = () => {
         this.setState(prevState => ({collapse:!prevState.collapse}))
     }
