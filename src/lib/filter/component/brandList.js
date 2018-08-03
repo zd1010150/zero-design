@@ -6,8 +6,8 @@ import ActionRow from './actionRow';
 const BrandRow = styled.div`
   transition: max-height 100ms ease-in-out, margin-top 100ms ease-in-out;
   overflow: hidden;
-  max-height: ${props => (props.collapse ? "85px" : "1500px")};
-  margin-top: ${props => (props.collapse ? "-40px" : 0)};
+  max-height: ${props => (props.collapse ? "80px" : "1500px")};
+  margin-top: ${props => (props.collapse ? "-35px" : 0)};
 `;
 
 const StyledCheckBox = styled.span`
