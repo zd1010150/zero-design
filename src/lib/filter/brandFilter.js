@@ -28,9 +28,11 @@ class BrandFilter extends Component{
         }
     }
     componentWillReceiveProps(nextProps){
-        if(nextProps.pickedBrands.length > 0){
+        if(nextProps.pickedBrands.length > 0 && nextProps.pickedBrands.length !== this.props.pickedBrands.length){
             this.setState({collapse: false})
-        }else{
+        }
+
+        if(nextProps.pickedBrands.length === 0 && nextProps.pickedBrands.length !== this.props.pickedBrands.length){
             this.setState({collapse: true})
         }
     }
