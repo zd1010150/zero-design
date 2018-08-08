@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ActionRow from './actionRow';
 const CheckboxGroup = Checkbox.Group;
 const CategoryRow = styled.div.attrs({
-  width: props => props.width || "500px"
+    width: props => props.width || "500px"
 })`
   transition: max-height 300ms ease-in-out;
   // width: ${props => props.width};
@@ -22,24 +22,24 @@ const propTypes = {
     cancelBackground:  PropTypes.string,
 }
 
-const CategoryList = ({ data, selectCategory, collapse, pickedCategories, ...props }) =>
-  <CategoryRow collapse={collapse}>
+const CategoryList = ({ data, selectCategory, collapse, pickedCategoryIds, ...props }) =>
+    <CategoryRow collapse={collapse}>
 
-      <CheckboxGroup value={pickedCategories} onChange={selectCategory}>
-          <Row>
-              {data.map((d, index) => {
-                  return (
-                      <Col xl={3} sm={5} key={d.id}>
-                          <Checkbox value={d} >
-                              {d.name}
-                          </Checkbox>
-                      </Col>
-                  );
-              })}
-          </Row>
-      </CheckboxGroup>
-      <ActionRow {...props}/>
-  </CategoryRow>;
+        <CheckboxGroup value={pickedCategoryIds} onChange={selectCategory}>
+            <Row>
+                {data.map((d, index) => {
+                    return (
+                        <Col xl={3} sm={5} key={d.id}>
+                            <Checkbox value={d.id} >
+                                {d.name}
+                            </Checkbox>
+                        </Col>
+                    );
+                })}
+            </Row>
+        </CheckboxGroup>
+        <ActionRow {...props}/>
+    </CategoryRow>;
 
 CategoryList.propType = propTypes;
 
