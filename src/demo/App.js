@@ -21,6 +21,8 @@ for (let i = 2; i < 20; i++) {
     mockBrand.push(obj);
 }
 
+const alphabets = [...Array(26).keys()].map(i => ({value: String.fromCharCode(i + 65), activated: true}));
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -134,6 +136,7 @@ class App extends Component {
                     selectAlphabet={this.selectAlphabet}
                     label="Brand"
                     data={this.state.brands}
+                    alphabets={alphabets}
                     saveBackground="green"
                     cancelBackground="red"
                 />

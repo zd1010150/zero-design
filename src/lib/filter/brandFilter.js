@@ -43,7 +43,7 @@ class BrandFilter extends Component{
         this.setState(prevState => ({collapse: true}))
     }
     render() {
-        const {label, data, selectBrand, selectAlphabet, saveBrand} = this.props;
+        const {label, data, selectBrand, selectAlphabet, saveBrand, alphabets} = this.props;
         return <div>
             <Row>
                 <Col xl={3} lg={5}>
@@ -51,7 +51,7 @@ class BrandFilter extends Component{
                 </Col>
                 <Col xl={18} lg={14}>
                     {
-                        !this.state.collapse &&  <AlphabetList selectAlphabet={selectAlphabet}/>
+                        !this.state.collapse &&  <AlphabetList alphabets={alphabets} selectAlphabet={selectAlphabet}/>
                     }
                 </Col>
                 <Col xl={3} lg={5}>

@@ -99,7 +99,7 @@ class CheckboxSet extends React.Component{
                                             {option.name}
                                         </FullName>
                                     }
-                                    <BrandName id={option.id} onMouseOver={(e) => {console.log(e.target.id); this.setState({showFullNameId: Number(e.target.id)})}}>{option.name}</BrandName>
+                                    <BrandName id={option.id} onMouseOver={(e) => {this.setState({showFullNameId: Number(e.target.id)})}}>{option.name}</BrandName>
                                     {filter(props.pickedBrands, option) && <StyledIcon type="check-square" />}
                                 </StyledCheckBox>
                             </label>
